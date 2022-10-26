@@ -28,6 +28,10 @@ pub fn guess_type(file: &mut File) -> FileType
     {
         return FileType::new("application/x-gzip", "GZipped file.")
     }
+    if &file_bytes[0..=7] == b"\x89\x50\x4E\x47\x0D\x0A\x1A\x0A"
+    {
+        return FileType::new("image/png", "PNG image")
+    }
     else 
     {
         return FileType::default()
