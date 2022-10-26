@@ -21,8 +21,8 @@ pub fn guess_type(file: &mut File) -> FileType
     let mut file_bytes: Box<[u8]> = Box::new([0; 10]);
     file.read(&mut file_bytes).unwrap();
 
-    // tar.gz
-    if file_bytes[0] == 31 && file_bytes[1] == 139 {
+    // *.gz
+    if &file_bytes[0..=1] == b"\x1F\x8B" {
         return FileType::new("application/x-gzip", "GZipped file.")
     } else {
         return FileType::default()
