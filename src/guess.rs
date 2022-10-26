@@ -18,13 +18,16 @@ impl FileType
 
 pub fn guess_type(file: &mut File) -> FileType 
 {
-    let mut file_bytes: Box<[u8]> = Box::new([0; 10]);
+    let mut file_bytes: Box<[u8]> = Box::new([0; 16]);
     file.read(&mut file_bytes).unwrap();
 
     // *.gz
-    if &file_bytes[0..=1] == b"\x1F\x8B" {
+    if &file_bytes[0..=1] == b"\x1F\x8B" 
+    {
         return FileType::new("application/x-gzip", "GZipped file.")
-    } else {
+    }
+    else 
+    {
         return FileType::default()
     }
 }
