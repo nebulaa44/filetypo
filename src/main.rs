@@ -16,8 +16,8 @@ fn main() {
 
     println!("Filename given: {filename}");
 
-    let file = fs::File::open(filename).unwrap();
-    let file_type = guess::guess_type(&file);
+    let mut file = fs::File::open(filename).unwrap();
+    let file_type = guess::guess_type(&mut file);
 
     println!("{file_type:#?}");
 }

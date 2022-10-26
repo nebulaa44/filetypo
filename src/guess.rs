@@ -1,4 +1,5 @@
 use std::fs::File;
+use std::io::Read;
 
 #[derive(Debug)]
 pub struct FileType 
@@ -15,7 +16,15 @@ impl FileType
     }
 }
 
-pub fn guess_type(file: &File) -> FileType 
+pub fn guess_type(file: &mut File) -> FileType 
 {
-    FileType::new("deez/deez", "placeholder")
+    let mut file_bytes: Box<[u8]> = Box::new([0; 10]);
+    file.read(&mut file_bytes).unwrap();
+
+    // tar.gz
+    if file_bytes[0] == 31 && file_bytes[1] == 139 {
+        return FileType::new("application/x-gzip", "GZipped file.")
+    } else {
+        return FileType::new("unknown", "unknown")
+    }
 }
