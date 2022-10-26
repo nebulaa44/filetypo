@@ -10,12 +10,14 @@ pub struct FileType
 
 impl FileType 
 {
+    #[allow(dead_code)]
     pub fn new(mime: &str, description: &str) -> Self
     {
         Self {mime: mime.to_string(), description: description.to_string()}
     }
 }
 
+#[allow(dead_code)]
 pub fn guess_type(file: &mut File) -> FileType 
 {
     let mut file_bytes: Box<[u8]> = Box::new([0; 16]);
