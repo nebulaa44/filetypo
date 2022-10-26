@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::Read;
 
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct FileType 
 {
     pub mime: String,
@@ -25,6 +25,6 @@ pub fn guess_type(file: &mut File) -> FileType
     if file_bytes[0] == 31 && file_bytes[1] == 139 {
         return FileType::new("application/x-gzip", "GZipped file.")
     } else {
-        return FileType::new("unknown", "unknown")
+        return FileType::default()
     }
 }
