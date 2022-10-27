@@ -12,7 +12,7 @@ mod tests
         let mut sample_gzip = File::open("./samples/gzip-sample.gz").unwrap();
         let mime = guess::guess_type(&mut sample_gzip).mime;
 
-        assert_eq!(mime, "application/x-gzip");
+        assert_eq!(mime, "application/gzip");
     }
 
     #[test]
