@@ -42,4 +42,13 @@ mod tests
         assert_eq!(mime, "image/png");
     }
 
+    #[test]
+    fn wav_test()
+    {
+        let mut sample_wav = File::open("./samples/wav-sample.wav").unwrap();
+        let mime = guess::guess_type(&mut sample_wav).mime;
+
+        assert_eq!(mime, "audio/x-wav");
+    }
+
 }

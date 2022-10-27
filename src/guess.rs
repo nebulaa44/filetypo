@@ -1,6 +1,6 @@
 use std::fs::File;
 use std::io::Read;
-
+// TODO: Add an actual default implementation
 #[derive(Debug, Default)]
 pub struct FileType 
 {
@@ -45,6 +45,12 @@ pub fn guess_type(file: &mut File) -> FileType
     else if &file_bytes[0..8] == b"\x89\x50\x4E\x47\x0D\x0A\x1A\x0A"
     {
         return FileType::new("image/png", "PNG image")
+    }
+
+    // WAV files
+    else if &file_bytes[0..4] == b"RIFF" && &file_bytes[8..12] == b"WAVE"
+    {
+        return FileType::new("audio/x-wav", "WAV audio")
     }
 
     else 
