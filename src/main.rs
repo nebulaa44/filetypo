@@ -21,5 +21,6 @@ fn main()
     let mut file = fs::File::open(filename).unwrap();
     let file_type = guess::guess_type(&mut file);
 
-    println!("{file_type:#?}");
+    println!("MIME Type:\t {}", file_type.mime);
+    println!("Type Description: {}", file_type.description);
 }
