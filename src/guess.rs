@@ -26,13 +26,19 @@ pub fn guess_type(file: &mut File) -> FileType
     // GZip archives
     if &file_bytes[0..=1] == b"\x1F\x8B" 
     {
-        return FileType::new("application/x-gzip", "GZipped file.")
+        return FileType::new("application/gzip", "GZipped file.")
     }
 
     // MP3 Files (with ID3 data)
     else if &file_bytes[0..=2] == b"ID3"
     {
         return FileType::new("audio/mpeg", "MPEG audio with ID3 data")
+    }
+
+    // OGG Vorbis Files
+    else if &file_bytes[0..=3] == b"OggS"
+    {
+        return FileType::new("audio/ogg", "Ogg Vorbis File")
     }
 
     // PNG files

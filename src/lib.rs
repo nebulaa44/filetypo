@@ -25,6 +25,15 @@ mod tests
     }
 
     #[test]
+    fn ogg_test()
+    {
+        let mut sample_ogg = File::open("./samples/ogg-sample.ogg").unwrap();
+        let mime = guess::guess_type(&mut sample_ogg).mime;
+
+        assert_eq!(mime, "audio/ogg");
+    }
+
+    #[test]
     fn png_test()
     {
         let mut sample_png = File::open("./samples/png-sample.png").unwrap();
