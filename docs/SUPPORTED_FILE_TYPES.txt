@@ -1,8 +1,8 @@
 The following file types are supported by FileTypo, as of 11/30/2022.
 
-Gzip (.gz)
-MP3 with embedded ID3 data (.mp3)
-JPEG (.jpeg, .jpg)
-PNG (.png)
-Vorbis (.ogg)
-WAV (.wav)
+Gzip
+MP3 with embedded ID3 data
+JPEG (does not distinguish between JPEG-LS)
+PNG
+Vorbis/Ogg
+WAV
