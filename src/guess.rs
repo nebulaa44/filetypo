@@ -29,6 +29,12 @@ pub fn guess_type(file: &mut File) -> FileType
         return FileType::new("application/gzip", "GZipped file.")
     }
 
+    // JPEG files
+    if &file_bytes[0..3] == b"\xFF\xd8\xFF"
+    {
+        return FileType::new("image/jpeg", "JPEG image")
+    }
+
     // MP3 Files (with ID3 data)
     else if &file_bytes[0..3] == b"ID3"
     {

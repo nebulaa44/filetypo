@@ -16,6 +16,15 @@ mod tests
     }
 
     #[test]
+    fn jpeg_test()
+    {
+        let mut sample_gzip = File::open("./samples/jpeg-sample.jpeg").unwrap();
+        let mime = guess::guess_type(&mut sample_gzip).mime;
+
+        assert_eq!(mime, "image/jpeg");
+    }
+
+    #[test]
     fn mp3_test()
     {
         let mut sample_mp3 = File::open("./samples/mp3-sample.mp3").unwrap();
