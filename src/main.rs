@@ -9,6 +9,12 @@ struct Args
 {
     #[arg(short, long)]
     filename: String,
+
+    #[arg(short, long)]
+    mime: bool,
+
+    #[arg(short, long)]
+    description: bool,
 }
 
 fn main() 
@@ -16,11 +22,17 @@ fn main()
     let args = Args::parse();
     let filename = args.filename;
 
-    println!("Filename given: {filename}");
-
     let mut file = fs::File::open(filename).unwrap();
     let file_type = guess::guess_type(&mut file);
 
-    println!("MIME Type:\t {}", file_type.mime);
-    println!("Type Description: {}", file_type.description);
+    // scriptable mode
+    if args.mime { print!("{}", file_type.mime) }
+    else if args.description { print!("{}", file_type.description) }
+    
+    // if scriptable mode isn't enabled fallback to friendly ui
+    else
+    {
+        println!("MIME Type:\t {}", file_type.mime);
+        println!("Type Description: {}", file_type.description);
+    }
 }
