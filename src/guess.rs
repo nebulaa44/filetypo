@@ -1,7 +1,6 @@
 use std::fs::File;
 use std::io::Read;
-// TODO: Add an actual default implementation
-#[derive(Debug, Default)]
+#[derive(Debug)]
 pub struct FileType 
 {
     pub mime: String,
@@ -14,6 +13,14 @@ impl FileType
     pub fn new(mime: &str, description: &str) -> Self
     {
         Self {mime: mime.to_string(), description: description.to_string()}
+    }
+}
+
+impl Default for FileType
+{
+    fn default() -> FileType 
+    {
+        return FileType::new("unknown", "Unknown file type.");
     }
 }
 
