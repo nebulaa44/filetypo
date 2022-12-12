@@ -1,5 +1,6 @@
 use std::fs::File;
 use std::io::Read;
+
 #[derive(Debug)]
 pub struct FileType 
 {
@@ -37,7 +38,7 @@ pub fn guess_type(file: &mut File) -> FileType
     }
 
     // JPEG files
-    if &file_bytes[0..3] == b"\xFF\xd8\xFF"
+    else if &file_bytes[0..3] == b"\xFF\xd8\xFF"
     {
         return FileType::new("image/jpeg", "JPEG image")
     }

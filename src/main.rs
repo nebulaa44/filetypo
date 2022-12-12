@@ -32,7 +32,7 @@ fn main()
     // if scriptable mode isn't enabled fallback to friendly ui
     else
     {
-        println!("MIME Type:\t {}", file_type.mime);
+        println!("MIME Type:\t  {}", file_type.mime);
         println!("Type Description: {}", file_type.description);
     }
 }
