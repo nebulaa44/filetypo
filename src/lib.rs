@@ -52,6 +52,15 @@ mod tests
     }
 
     #[test]
+    fn truetype_test()
+    {
+        let mut sample_ttf = File::open("./samples/truetype-sample.ttf").unwrap();
+        let mime = guess::guess_type(&mut sample_ttf).mime;
+
+        assert_eq!(mime, "font/ttf")
+    }
+
+    #[test]
     fn wav_test()
     {
         let mut sample_wav = File::open("./samples/wav-sample.wav").unwrap();

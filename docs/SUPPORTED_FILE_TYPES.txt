@@ -4,5 +4,6 @@ Gzip
 MP3 with embedded ID3 data
 JPEG (does not distinguish between JPEG-LS)
 PNG
+TrueType
 Vorbis/Ogg
 WAV

@@ -61,6 +61,12 @@ pub fn guess_type(file: &mut File) -> FileType
         return FileType::new("image/png", "PNG image")
     }
 
+    // TrueType fonts
+    else if &file_bytes[0..4] == b"\x00\x01\x00\x00"
+    {  
+        return FileType::new("font/ttf", "TrueType font")
+    }
+
     // WAV files
     else if &file_bytes[0..4] == b"RIFF" && &file_bytes[8..12] == b"WAVE"
     {
