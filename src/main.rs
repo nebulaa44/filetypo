@@ -8,12 +8,15 @@ use clap::Parser;
 #[command(version, author, about)]
 struct Args 
 {
+    /// Name of the file that should be guessed
     #[arg(short, long)]
     filename: String,
 
+    /// Only print the MIME type
     #[arg(short, long)]
     mime: bool,
 
+    /// Only print the type's description
     #[arg(short, long)]
     description: bool,
 }
