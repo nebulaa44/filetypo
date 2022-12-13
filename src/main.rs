@@ -3,6 +3,7 @@ mod guess;
 use std::fs;
 use clap::Parser;
 
+// this struct is used by clap to get cli arguments
 #[derive(Parser)]
 #[command(version, author, about)]
 struct Args 

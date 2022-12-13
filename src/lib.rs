@@ -1,3 +1,5 @@
+// the filetypo test suite
+
 mod guess;
 
 #[cfg(test)]

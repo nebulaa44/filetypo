@@ -1,6 +1,7 @@
 use std::fs::File;
 use std::io::Read;
 
+// contains fields for type descriptions
 #[derive(Debug)]
 pub struct FileType 
 {
@@ -10,6 +11,7 @@ pub struct FileType
 
 impl FileType 
 {
+    // convenience constructor to make the code look nicer
     #[allow(dead_code)]
     pub fn new(mime: &str, description: &str) -> Self
     {
@@ -17,6 +19,7 @@ impl FileType
     }
 }
 
+// fallback response when the file can't be guessed
 impl Default for FileType
 {
     fn default() -> FileType 
@@ -25,6 +28,7 @@ impl Default for FileType
     }
 }
 
+// actually guesses the type
 #[allow(dead_code)]
 pub fn guess_type(file: &mut File) -> FileType 
 {
