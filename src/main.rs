@@ -3,7 +3,7 @@ mod guess;
 use std::fs;
 use clap::Parser;
 
-#[derive(Debug, Parser)]
+#[derive(Parser)]
 #[command(version, author, about)]
 struct Args 
 {
