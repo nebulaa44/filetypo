@@ -1,4 +1,4 @@
-The following file types are supported by FileTypo, as of 12/12/2022
+The following file types are supported by FileTypo, as of 12/27/2022
 
 Gzip
 MP3 with embedded ID3 data
